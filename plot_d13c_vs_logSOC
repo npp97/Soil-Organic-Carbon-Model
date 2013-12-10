@@ -1,0 +1,74 @@
+# Module 3: Plot d13C against logC.
+# ß may be used as a proxy for turnover
+
+
+
+# read_data(Folder_File = 'Raw_Data/forest.csv')
+# plot_title = "primary forest"
+# interpolation()
+
+percent_C = (C_content/10)
+log_C = log(percent_C)
+percent_Cse = (C_se/10)
+log_Cse = log(percent_Cse)
+
+print
+print "C in %  =",percent_C
+print "log C   =",log_C
+print "C_se    =",C_se
+print "C_se/10 =",percent_Cse
+print
+
+dy = (d13C[3] - d13C[0])
+dx = (log_C[3] - log_C[0])
+#zero = (slope * log_C)
+
+slope = dy/dx
+print "slope =", slope
+y = slope*log_C - 28
+
+
+fig3 = plt.figure(figsize=(8, 8), dpi=300)
+plt.plot( log_C, d13C, linestyle="none", marker="o", color="blue")#, label="Fitted Curve")
+plt.errorbar(log_C, d13C,xerr=percent_Cse, yerr=d13Cse, linestyle="None", marker="o", color="red", label="Original Data")
+plt.plot(log_C,y, label=('y =',slope,"x", -28))
+b1 = (min(log_C) -0.5)
+b2 = (max(log_C) + 0.5)
+plt.xlim(b1, b2) 
+#plt.ylim(-100.0, 0.0)
+plt.ylabel("d13C", fontsize=16)
+plt.xlabel("log(C)", fontsize=16)
+plt.legend(loc='upper right')
+fig3.suptitle(('logC vs d13C',plot_title), fontsize=20)
+plt.show()
+
+
+hit = (slope * log_C[0])
+
+def hit_x():
+    global log_C,slope
+    if ((slope * log_C[0]) > 0):
+        print fail
+    else: 
+        (log_C[0] == log_C[0] - 0.01)
+        return
+
+    
+percent_C100 = (yCz/10)    
+log_yCz = log(percent_C100)
+
+
+fig4 = plt.figure(figsize=(8, 8), dpi=300)
+plt.plot( log_yCz, yd13Cz, linestyle="none", marker="o", color="blue", label="Fitted Curve")
+plt.errorbar(log_C, d13C,xerr=percent_Cse, yerr=d13Cse, linestyle="None", marker="o", color="red", label="Original Data")
+plt.plot(log_C,y, label=('y =',slope,"x", -28))
+b1 = (min(log_C) -0.5)
+b2 = (max(log_C) + 0.5)
+plt.xlim(b1, b2) 
+#plt.ylim(-100.0, 0.0)
+plt.ylabel("d13C", fontsize=16)
+plt.xlabel("log(C)", fontsize=16)
+plt.legend(loc='upper right')
+fig4.suptitle(('logC vs d13C',plot_title), fontsize=20)
+
+plt.show()
