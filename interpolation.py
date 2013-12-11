@@ -2,7 +2,11 @@
 #    Assuming: C(z) = a*np.exp(-b*x) + c  ***
 
 
-#from read_data import *  
+from read_data import *
+import matplotlib.pyplot as plt
+import numpy as np
+import csv
+  
 read_data(Folder_File = 'Raw_Data/forest.csv')
 
 plot_title = "primary forest" 

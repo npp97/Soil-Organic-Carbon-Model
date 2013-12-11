@@ -1,5 +1,6 @@
 # Module 4: run model for 1 year 
 
+
 import numpy as np
 read_data(Folder_File = 'Raw_Data/forest.csv')
 
