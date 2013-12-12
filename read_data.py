@@ -44,7 +44,7 @@ def read_data(Folder_File):
 
 
 
-    #fig1 = plt.figure(figsize=(8, 8), dpi=300)
+    #fig1 = plt.figure(figsize=(8, 8), dpi=96)
     x = C_content
     x_error = C_se
     
@@ -58,7 +58,7 @@ def read_data(Folder_File):
     #plt.show()
     
     print 
-    #fig2 = plt.figure(figsize=(8, 8), dpi=300)
+    #fig2 = plt.figure(figsize=(8, 8), dpi=96)
     x2 = d13C
     x_err = d13Cse
     
@@ -72,7 +72,7 @@ def read_data(Folder_File):
     #plt.xlabel("d13C ratio", fontsize=16)
     #fig2.suptitle('Measured d13C and standard error', fontsize=18)
     #plt.show()
-    return(Folder_File)
+    return(depth, C_content, C_se, d13C, d13Cse)
 
 
 #   example for usage given below
