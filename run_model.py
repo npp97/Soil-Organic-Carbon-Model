@@ -2,22 +2,12 @@
 
 
 import numpy as np
-read_data(Folder_File = 'Raw_Data/forest.csv')
+from interpolation import *
+#read_data(Folder_File = 'Raw_Data/forest.csv')
 
 yCz, yd13Cz = interpolation()
 Car = yCz
 Car_tx = []
-
-
-def pde(k, a, D, h, K, i):
-    global Car
-    global Car_tx
-    #Car_ti1 = (Car[i] * k**2 + (D * h * Car[i+1]  -2 + D * h * Car[i]) + (D * h * Car[i-1]) + (K * h * k**2 * Car[i])) / k**2    
-    Car_ti1 =  (Car[i] * k**2 + (D * h * Car[i+1] - 2 * D * h * Car[i] + D * h * Car[i-1]) + (a * Car[i-1] * k - a * Car[i] * k) - K * h * k**2 * Car[i]) / k**2 
-    Car_ti1 = np.array(Car_ti1, dtype=float)
-    Car_tx.append(Car_ti1)
-    return 
-
 
 # distance
 k = 0.5
@@ -37,6 +27,15 @@ I = 0.01
 # time
 h = 1
 
+
+def pde(k, a, D, h, K, i):
+    global Car
+    global Car_tx
+    #Car_ti1 = (Car[i] * k**2 + (D * h * Car[i+1]  -2 + D * h * Car[i]) + (D * h * Car[i-1]) + (K * h * k**2 * Car[i])) / k**2    
+    Car_ti1 =  (Car[i] * k**2 + (D * h * Car[i+1] - 2 * D * h * Car[i] + D * h * Car[i-1]) + (a * Car[i-1] * k - a * Car[i] * k) - K * h * k**2 * Car[i]) / k**2 
+    Car_ti1 = np.array(Car_ti1, dtype=float)
+    Car_tx.append(Car_ti1)
+    return 
 
 
 def result():
@@ -60,6 +59,7 @@ x100 = range(0,100,1); x100 = np.array(x100)
 fig1 = plt.figure(figsize=(8, 8), dpi=300)
 plt.plot(yCz, -x100, linestyle="dashed", marker="o", color="green", label="Fitted Curve")
 plt.plot(Car_tx, -x, linestyle="dashed", marker="o", color="red", label="1a")
+#plt.errorbar(C_content, -depth , xerr=C_se, linestyle="None", marker="o", color="red", label="Original Data") 
 b2 = 25 #(max(yCz) + 5)
 plt.xlim(0, b2) 
 plt.ylabel("depth", fontsize = 16)

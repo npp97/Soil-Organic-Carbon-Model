@@ -14,7 +14,6 @@ plot_title = "primary forest"
 depth, C_content, C_se, d13C, d13Cse = read_data(Folder_File = 'Raw_Data/forest.csv')
 
 
-import numpy as np
 from scipy.optimize import curve_fit
 def func(x, a, b, c):
     return a*np.exp(-b*x) + c
