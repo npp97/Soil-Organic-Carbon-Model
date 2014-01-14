@@ -56,7 +56,7 @@ x = range(1,99,1); x = np.array(x)
 
 x100 = range(0,100,1); x100 = np.array(x100)
 
-fig1 = plt.figure(figsize=(8, 8), dpi=300)
+fig1 = plt.figure(figsize=(8, 8), dpi=96)
 plt.plot(yCz, -x100, linestyle="dashed", marker="o", color="green", label="Fitted Curve")
 plt.plot(Car_tx, -x, linestyle="dashed", marker="o", color="red", label="1a")
 #plt.errorbar(C_content, -depth , xerr=C_se, linestyle="None", marker="o", color="red", label="Original Data") 

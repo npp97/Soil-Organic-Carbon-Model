@@ -51,7 +51,7 @@ def interpolation():
     b2 = 25 #(max(yCz) + 5)
     plt.xlim(0, b2) 
     plt.ylabel("depth", fontsize = 16)
-    plt.xlabel("C (g kg-1)", fontsize = 16)
+    plt.xlabel("C (g kg-1)", fontsize = 9)
     plt.legend(loc='lower right')
     fig1.suptitle(("Interpolation",plot_title), fontsize=20)
     plt.show()
